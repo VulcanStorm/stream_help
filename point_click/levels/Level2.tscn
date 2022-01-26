@@ -1,0 +1,107 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://scripts/click_object.gd" type="Script" id=1]
+[ext_resource path="res://kenney_background_elements/PNG/Default/pyramidMayan.png" type="Texture" id=2]
+[ext_resource path="res://kenney_background_elements/PNG/Default/cloud4.png" type="Texture" id=3]
+[ext_resource path="res://kenney_background_elements/PNG/Default/bushOrange1.png" type="Texture" id=4]
+[ext_resource path="res://kenney_background_elements/PNG/Default/bushOrange3.png" type="Texture" id=5]
+[ext_resource path="res://scenes/pc_gui.tscn" type="PackedScene" id=6]
+[ext_resource path="res://kenney_background_elements/PNG/Default/bushOrange4.png" type="Texture" id=7]
+[ext_resource path="res://kenney_background_elements/PNG/Default/bushOrange2.png" type="Texture" id=8]
+[ext_resource path="res://kenney_background_elements/PNG/Default/cloud5.png" type="Texture" id=9]
+[ext_resource path="res://kenney_background_elements/PNG/Default/cloud2.png" type="Texture" id=10]
+[ext_resource path="res://kenney_background_elements/PNG/Default/castleSmallAlt.png" type="Texture" id=11]
+[ext_resource path="res://scenes/pc_camera.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scripts/LevelChanger.gd" type="Script" id=13]
+[ext_resource path="res://kenney_background_elements/PNG/Default/bush2.png" type="Texture" id=14]
+
+[node name="Level2" type="Node"]
+
+[node name="Camera2D" parent="." instance=ExtResource( 12 )]
+
+[node name="clouds" type="Node2D" parent="."]
+z_index = -1
+
+[node name="Cloud5" type="Sprite" parent="clouds"]
+position = Vector2( 131, 279 )
+texture = ExtResource( 9 )
+
+[node name="Cloud4" type="Sprite" parent="clouds"]
+position = Vector2( 856, 228 )
+texture = ExtResource( 3 )
+
+[node name="Cloud2" type="Sprite" parent="clouds"]
+position = Vector2( 521, 96 )
+texture = ExtResource( 10 )
+
+[node name="bushes" type="Node2D" parent="."]
+z_index = 1
+
+[node name="BushOrange4" type="Sprite" parent="bushes"]
+position = Vector2( 233, 521 )
+texture = ExtResource( 7 )
+
+[node name="BushOrange5" type="Sprite" parent="bushes"]
+position = Vector2( 363, 494 )
+texture = ExtResource( 7 )
+
+[node name="BushOrange6" type="Sprite" parent="bushes"]
+position = Vector2( 533, 495 )
+texture = ExtResource( 7 )
+
+[node name="BushOrange3" type="Sprite" parent="bushes"]
+position = Vector2( 447, 463 )
+texture = ExtResource( 5 )
+
+[node name="BushOrange2" type="Sprite" parent="bushes"]
+position = Vector2( 653, 513 )
+texture = ExtResource( 8 )
+
+[node name="BushOrange7" type="Sprite" parent="bushes"]
+position = Vector2( 767, 561 )
+texture = ExtResource( 5 )
+
+[node name="BushOrange8" type="Sprite" parent="bushes"]
+position = Vector2( 436, 564 )
+texture = ExtResource( 4 )
+
+[node name="BushOrange9" type="Sprite" parent="bushes"]
+position = Vector2( 77, 507 )
+texture = ExtResource( 4 )
+
+[node name="BushOrange1" type="Sprite" parent="bushes"]
+position = Vector2( 820, 482 )
+texture = ExtResource( 4 )
+
+[node name="level1" type="Area2D" parent="bushes"]
+position = Vector2( 962, 520 )
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_group_": true
+}
+level_id = "1"
+
+[node name="Plant" type="Sprite" parent="bushes/level1"]
+texture = ExtResource( 14 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="bushes/level1"]
+polygon = PoolVector2Array( 9, 22, 25, 8, 7, 3, 19, -22, 5, -18, -4, -3, -23, -11, -11, 10, -27, 12, -10, 22 )
+
+[node name="background" type="Node2D" parent="."]
+
+[node name="PyramidMayan" type="Sprite" parent="background"]
+position = Vector2( 392, 229 )
+texture = ExtResource( 2 )
+
+[node name="castle" type="Area2D" parent="background"]
+position = Vector2( 634, 365 )
+script = ExtResource( 1 )
+zoom = Vector2( 0.5, 0.5 )
+
+[node name="CastleSmallAlt" type="Sprite" parent="background/castle"]
+texture = ExtResource( 11 )
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="background/castle"]
+polygon = PoolVector2Array( -53, -18, -50, 42, 52, 40, 53, -19, 38, -43, 15, -13, -18, -14, -38, -42 )
+
+[node name="PCGUI" parent="." instance=ExtResource( 6 )]
